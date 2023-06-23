@@ -73,6 +73,15 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        btnCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Cadastro.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         mostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
