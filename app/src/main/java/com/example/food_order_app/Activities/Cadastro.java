@@ -16,12 +16,16 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.food_order_app.Entities.Usuario;
 import com.example.food_order_app.MainActivity;
 import com.example.food_order_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -65,23 +69,40 @@ public class Cadastro extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailCadastro = edtEmailCadastro.getText().toString();
+
+                Usuario usuario = new Usuario();
+
+                usuario.setEmail(edtEmailCadastro.getText().toString());
                 String senhaCadastro = edtSenhaCadastro.getText().toString();
                 String confirmarSenha = edtConfrimarSenha.getText().toString();
 
-                if(!TextUtils.isEmpty(emailCadastro) || !TextUtils.isEmpty(senhaCadastro) || !TextUtils.isEmpty(confirmarSenha)){
+                if(!TextUtils.isEmpty(usuario.getEmail()) && !TextUtils.isEmpty(senhaCadastro) && !TextUtils.isEmpty(confirmarSenha)){
                     if(senhaCadastro.equals(confirmarSenha)){
                         cadastroPB.setVisibility(View.VISIBLE);
 
-                        fAuth.createUserWithEmailAndPassword(emailCadastro,senhaCadastro).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        fAuth.createUserWithEmailAndPassword(usuario.getEmail(), senhaCadastro).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+                                    usuario.setId(fAuth.getUid());
+                                    usuario.salvar();
                                     telaPrincipal();
                                 }
                                 else{
-                                    String error = task.getException().getMessage();
-                                    Toast.makeText(Cadastro.this, ""+error, Toast.LENGTH_SHORT).show();
+                                    String error;
+                                    try{
+                                        throw task.getException();
+                                    }catch (FirebaseAuthWeakPasswordException e){
+                                        error = "A senha deve conter no mínimo 6 caracteres";
+                                    }catch (FirebaseAuthInvalidCredentialsException e){
+                                        error = "Email inválido";
+                                    }catch (FirebaseAuthUserCollisionException e){
+                                        error = "Este email já existe";
+                                    }catch (Exception e){
+                                        error = "Erro ao efetuar o cadastro";
+                                        e.printStackTrace();
+                                    }
+                                    Toast.makeText(Cadastro.this, error, Toast.LENGTH_SHORT).show();
                                 }
                                 cadastroPB.setVisibility(View.INVISIBLE);
                             }
@@ -90,6 +111,9 @@ public class Cadastro extends AppCompatActivity {
                     else{
                         Toast.makeText(Cadastro.this, "A senha deve ser a mesma em ambos os campos", Toast.LENGTH_SHORT).show();
                     }
+                }
+                else {
+                    Toast.makeText(Cadastro.this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
