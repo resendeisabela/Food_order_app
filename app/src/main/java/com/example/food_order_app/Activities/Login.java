@@ -40,12 +40,12 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         fAuth = FirebaseAuth.getInstance();
-        edtEmail = findViewById(R.id.edtEmail);
-        edtSenha = findViewById(R.id.edtSenha);
-        btnLogin = findViewById(R.id.btnLogin);
-        btnCadastro = findViewById(R.id.btnCadastro);
-        loginPB = findViewById(R.id.loginPB);
-        mostrarSenha = findViewById(R.id.mostarSenha);
+        edtEmail = findViewById(R.id.edt_email);
+        edtSenha = findViewById(R.id.edt_senha);
+        btnLogin = findViewById(R.id.btn_login);
+        btnCadastro = findViewById(R.id.btn_registrar);
+        loginPB = findViewById(R.id.loginProgressBar);
+        mostrarSenha = findViewById(R.id.ckb_mostrar_senha);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
