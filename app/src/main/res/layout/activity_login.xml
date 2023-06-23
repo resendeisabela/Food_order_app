@@ -40,12 +40,11 @@
 
     <CheckBox
         android:id="@+id/ckb_mostrar_senha"
-        android:layout_width="200dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:text="Mostrar senha"
         android:textColor="@color/black"
         android:buttonTint="@color/black"
-        android:layout_marginRight="70dp"
         android:layout_marginTop="10dp"/>
 
     <Button

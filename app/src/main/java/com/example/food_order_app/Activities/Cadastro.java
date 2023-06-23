@@ -40,12 +40,12 @@ public class Cadastro extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
-//        edtEmailCadastro = findViewById(R.id.edtEmailcadastro);
-//        edtSenhaCadastro = findViewById(R.id.edtSenhaCadastro);
-//        edtConfrimarSenha = findViewById(R.id.edtConfirmarSenha);
-//        mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
-//        btnCadastrar = findViewById(R.id.btnCadastrar);
-//        cadastroPB = findViewById(R.id.cadastroPB);
+        edtEmailCadastro = findViewById(R.id.edtEmailcadastro);
+        edtSenhaCadastro = findViewById(R.id.edtSenhaCadastro);
+        edtConfrimarSenha = findViewById(R.id.edtConfirmarSenha);
+        mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
+        btnCadastrar = findViewById(R.id.btnCadastrar);
+        cadastroPB = findViewById(R.id.cadastroPB);
 
 
         mostrarSenhaCadastro.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
