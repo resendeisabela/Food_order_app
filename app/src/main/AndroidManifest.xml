@@ -12,10 +12,10 @@
         android:theme="@style/Theme.Food_order_app"
         tools:targetApi="31">
         <activity
-            android:name=".Cadastro"
+            android:name=".Activities.Cadastro"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Activities.Login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
