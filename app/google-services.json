@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "75852629915",
+    "project_id": "food-order-app-ee943",
+    "storage_bucket": "food-order-app-ee943.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75852629915:android:148ab89ee6f5d5329e033e",
+        "android_client_info": {
+          "package_name": "com.example.food_order_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75852629915-ra0qu7dinl1fgokausc1g3gc7r09k5lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYm8Qw7IZ8jTsmF5xS3HHK6BBMf9KuaeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75852629915-ra0qu7dinl1fgokausc1g3gc7r09k5lb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
