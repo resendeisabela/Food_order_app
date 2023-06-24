@@ -14,7 +14,7 @@ public class Usuario {
     public Usuario(String id, String email, String senha) {
         this.id = id;
         this.email = email;
-        this.senha = senha;
+        setSenha(senha);
     }
 
     public String getId() {
@@ -38,7 +38,8 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, senha.toCharArray());
+        this.senha = bcryptHashString;
     }
 
     public void salvar(){
